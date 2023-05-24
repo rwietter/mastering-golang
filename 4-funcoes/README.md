@@ -41,3 +41,42 @@ func main() {
 	fmt.Println(a, b)
 }
 ```
+
+## Resultados nomeados
+
+Os resultados de uma função podem ser nomeados. Se forem, eles são tratados como variáveis definidas no topo da função.
+
+```go
+func operations(x, y int) (sum, minus int) {
+	sum = x + y
+	minus = x - y
+	return
+}
+```
+
+## Funções como valores
+
+As funções são valores também. Elas podem ser passadas como argumentos.
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func compute(fn func(float64, float64) float64) float64 {
+	return fn(3, 4)
+}
+
+func main() {
+	hypot := func(x, y float64) float64 {
+		return math.Sqrt(x*x + y*y)
+	}
+	fmt.Println(hypot(5, 12))
+
+	fmt.Println(compute(hypot))
+	fmt.Println(compute(math.Pow))
+}
+```

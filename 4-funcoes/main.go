@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // return multiple values
 func swap(x, y string) (string, string) {
