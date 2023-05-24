@@ -48,11 +48,11 @@ package main
 import "fmt"
 
 func main() {
-  var x [3]int
-  var y = &x[0] // obtém o endereço de memória do primeiro elemento do array
-  var z = &x[1] // obtém o endereço de memória do segundo elemento do array
-  fmt.Printf("%p %p\n", y, z)
-  y = z         // y agora aponta para o mesmo endereço de memória que z
-  fmt.Printf("%p %p\n", y, z)
+	var x [3]int = [3]int{1, 2, 3}
+	var y = &x[0] // y -> x[0] == 1
+	var z = &x[1] // z -> x[1] == 2
+	fmt.Printf("%d %d\n", *y, *z)
+	y = z                         // y -> z -> x[1] == 2
+	fmt.Printf("%d %d\n", *y, *z) // 2 2 (y e z apontam para o mesmo endereço de memória)
 }
 ```
