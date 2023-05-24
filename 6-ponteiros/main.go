@@ -13,7 +13,7 @@ func main() {
 	fmt.Println("Valor de y:", *y)         // 11
 	fmt.Println("Valor do ponteiro x:", x) // 11
 	// &: referenciação
-	// *: desreferenciação
+	// *: desreferenciamento ou indirecionamento
 
 	arrayPtr()
 }
