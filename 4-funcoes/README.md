@@ -80,3 +80,21 @@ func main() {
 	fmt.Println(compute(math.Pow))
 }
 ```
+
+## Init
+
+A função init é chamada automaticamente quando o programa é iniciado. Pode-se ter uma função init por arquivo. A função init não pode ser chamada explicitamente, ela é usada para inicializar variáveis e criar setups.
+
+```go
+package main
+
+import "fmt"
+
+func init() {
+	fmt.Println("init")
+}
+
+func main() {
+	fmt.Println("main")
+}
+```
