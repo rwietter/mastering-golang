@@ -14,11 +14,11 @@ func contains(slice []string, word string) bool {
 func AddressType(address string) string {
 	addresses := []string{"rua", "avenida", "estrada", "rodovia"}
 
-	firstWord := strings.ToLower(address[:strings.Index(address, " ")])
+	firstWord := strings.ToLower(strings.Split(address, " ")[0])
 
 	if contains(addresses, firstWord) {
 		return strings.Title(firstWord)
 	}
 
-	return "TIPO INVÁLIDO"
+	return "Invalid"
 }

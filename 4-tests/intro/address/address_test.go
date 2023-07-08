@@ -5,28 +5,29 @@ import (
 	"testing"
 )
 
+type addressTypeTest struct {
+	address  string
+	expected string
+}
+
 func TestAddressType(t *testing.T) {
+	t.Parallel()
 	t.Run("should return 'Rua' when address is 'Rua 1'", func(t *testing.T) {
-		addressType := address.AddressType("Rua 1")
 
-		if addressType != "Rua" {
-			t.Errorf("expected 'Rua', got %s", addressType)
+		tests := []addressTypeTest{
+			{"Rua 1", "Rua"},
+			{"Avenida 2", "Avenida"},
+			{"Estrada 3", "Estrada"},
+			{"Rodovia 4", "Rodovia"},
+			{"", "Invalid"},
 		}
-	})
 
-	t.Run("should return 'Avenida' when address is 'Avenida 2'", func(t *testing.T) {
-		addressType := address.AddressType("Avenida 2")
+		for _, test := range tests {
+			addressType := address.AddressType(test.address)
 
-		if addressType != "Avenida" {
-			t.Errorf("expected 'Avenida', got %s", addressType)
-		}
-	})
-
-	t.Run("should return 'Estrada' when address is 'Estrada 3'", func(t *testing.T) {
-		addressType := address.AddressType("Estrada 3")
-
-		if addressType != "Estrada" {
-			t.Errorf("expected 'Estrada', got %s", addressType)
+			if addressType != test.expected {
+				t.Errorf("expected '%s', got %s", test.expected, addressType)
+			}
 		}
 	})
 }
